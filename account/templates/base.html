@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Lyfetree - the tree of life{% endblock %}</title>
+    <!-- Add CSS stylesheets and scripts here -->
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+                <!-- Add more navigation links as needed -->
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="container">
+            {% block content %}
+            <!-- Content for child templates will go here -->
+            {% endblock %}
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; {{ year }} Lyfetree</p>
+    </footer>
+
+    <!-- Add JavaScript scripts here, if needed -->
+
+</body>
+</html>

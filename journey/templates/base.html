@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Lyfetree - the tree of life{% endblock %}</title>
+    <!-- Add CSS stylesheets and scripts here -->
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <!-- Add more navigation links as needed -->
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="container">
+            {% block content %}
+            <!-- Content for child templates will go here -->
+            {% endblock %}
+        </div>
+    </main>
+
+    <footer>
+        <!-- Footer content goes here -->
+    </footer>
+
+    <!-- Add JavaScript scripts here, if needed -->
+
+</body>
+</html>
