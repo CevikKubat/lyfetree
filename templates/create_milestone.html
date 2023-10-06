@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Create Milestone{% endblock %}
+
+{% block content %}
+    <h1>Create a New Milestone</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit" class="btn btn-primary">Create Milestone</button>
+    </form>
+    
+    <a href="{% url 'journey' %}" class="btn btn-secondary">Back to Journey</a>
+{% endblock %}
