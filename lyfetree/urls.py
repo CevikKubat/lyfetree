@@ -27,4 +27,6 @@ urlpatterns = [
     path("logout/", account_views.logout_view, name="logout"),
     path("", journey_views.index_view, name="index"),
     path("journey/", journey_views.journey_view, name="journey"),  # Example URL pattern for lyfetree.html
+    path('customize_milestone/<int:milestone_id>/', journey_views.customize_milestone_view, name='customize_milestone'),
+    path('create_milestone/', journey_views.create_milestone_view, name='create_milestone'),
 ]
