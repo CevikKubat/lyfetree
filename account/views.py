@@ -8,10 +8,10 @@ def register_view(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('dashboard')  # Redirect to a user's dashboard or profile page
+            return redirect('journey')  # Redirect to a user's dashboard or profile page
     else:
         form = UserCreationForm()
-    return render(request, 'registration/register.html', {'form': form})
+    return render(request, 'register.html', {'form': form})
 
 def login_view(request):
     if request.method == 'POST':
@@ -19,10 +19,10 @@ def login_view(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect('dashboard')  # Redirect to a user's dashboard or profile page
+            return redirect('journey')  # Redirect to a user's dashboard or profile page
     else:
         form = AuthenticationForm()
-    return render(request, 'registration/login.html', {'form': form})
+    return render(request, 'login.html', {'form': form})
 
 def logout_view(request):
     logout(request)
