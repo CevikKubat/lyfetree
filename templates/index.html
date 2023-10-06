@@ -3,7 +3,11 @@
 {% block title %}Lyfetree | Home{% endblock %}
 
 {% block content %}
-    <h1>Welcome to Lyfetree! Start growing your lyfetree today.</h1>
-    <p>Let's begin your journey.</p>
+    {% if user.is_authenticated %}
+        <h2>Welcome, {{ user.username }}</h2>
+    {% else %}
+        <h2>Welcome to Lyfetree! Start growing your Lyfetree today.</h2>
+        <p>Let's begin your <a href="{% url 'register' %}">Journey</a>.</p>
+    {% endif %}
 </body>
 {% endblock %}

@@ -3,7 +3,7 @@
 {% block title %}Lyfetree | Journey{% endblock %}
 
 {% block content %}
-    <h1>Your Journey</h1>
+    <h1>{{ user.username }}'s Journey</h1>
 
     <ul>
         {% for milestone in user_milestones %}

@@ -11,14 +11,14 @@
 </head>
 <body>
     <header>
+        <h1>Lyfetree</h1>
         <nav>
             <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
                 {% if user.is_authenticated %}
-                    <li>Welcome, {{ user.username }}!</li> <!-- Display the username -->
                     <li><a href="{% url 'journey' %}">My Journey</a></li> <!-- Dashboard -->
                     <li><a href="{% url 'logout' %}">Logout</a></li>
                 {% else %}
-                    <li><a href="/">Home</a></li>
                     <li><a href="{% url 'login' %}">Login</a></li>
                     <li><a href="{% url 'register' %}">Register</a></li>
                 {% endif %}
@@ -35,7 +35,7 @@
     </main>
 
     <footer>
-        <p>Hello, I'm a footer.</p>
+        <p>&copy; Lyfetree</p>
     </footer>
 
 </body>
