@@ -12,9 +12,6 @@ class MilestoneForm(forms.ModelForm):
         model = Milestone
         fields = ['title', 'parent']
 
-from django import forms
-from .models import Milestone
-
 class MilestoneCustomizationForm(forms.ModelForm):
     tags = forms.CharField(
         max_length=100, 
