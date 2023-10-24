@@ -24,7 +24,7 @@ jobs:
         run: pip install --upgrade pip
 
       - name: Install dependencies
-        run: pip install pipenv && pipenv install --deploy --ignore-pipfile
+        run: pip install pipenv && pipenv install --deploy
 
       - name: Run tests
         run: pipenv run python manage.py runserver
