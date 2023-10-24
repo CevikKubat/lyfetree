@@ -38,6 +38,14 @@ How to install and run the "Lyfetree" app on a local server/machine:
 3. In the repository, create a file called ".env" in the root folder of the repository for enviromental variables and generate a secret key (you can use whatever generator you like or type in any prefered combination of letters, numbers and symbols - but keep it strong, safe and secret)
 4. Paste your secret key in quotation marks in the first line of the .env file like this:
 ```bash
+DEBUG=True
+ALLOWED_HOSTS=localhost,127.0.0.1
+DB_ENGINE=django.db.backends.sqlite3
+DB_NAME="yourdatabasename".db
+DB_USER="yourusername"
+DB_PASSWORD="yourpassword"
+DB_HOST=localhost
+DB_PORT="yourport"
 SECRET_KEY="yoursecretkeygoeshere"
 ```
 5. Now that security is set up, you can create the local enviroment. Type ```pipenv install``` 
