@@ -20,8 +20,8 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Upgrade pip
-        run: pip install --upgrade pip
+      - name: Upgrade pip and pipenv
+        run: pip install --upgrade pip && pip install pipenv && pip install --upgrade pipenv
 
       - name: Install dependencies
         run: pip install pipenv && pipenv install --deploy
