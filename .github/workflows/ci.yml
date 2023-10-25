@@ -30,5 +30,20 @@ jobs:
       - name: Install dependencies
         run: pipenv install --deploy
 
+      - name: Set Environmental Variables from .env
+        run: |
+          echo "${{ secrets.ALLOWED_HOSTS }}" >> .env
+          echo "${{ secrets.DB_ENGINE }}" >> .env
+          echo "${{ secrets.DB_HOST }}" >> .env
+          echo "${{ secrets.DB_NAME }}" >> .env
+          echo "${{ secrets.DB_PASSWORD }}" >> .env
+          echo "${{ secrets.DB_PORT }}" >> .env
+          echo "${{ secrets.DB_USER }}" >> .env
+          echo "${{ secrets.DEBUG }}" >> .env
+          echo "${{ secrets.SECRET_KEY }}" >> .env
+        shell: bash
+
       - name: Run tests
-        run: pipenv run python manage.py runserver
+        run: |
+          source .env
+          pipenv run python manage.py runserver
