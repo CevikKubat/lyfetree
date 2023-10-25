@@ -30,13 +30,7 @@ jobs:
       - name: Install dependencies
         run: pipenv install --deploy
 
-      - name: Set Environmental Variables
-
-        run: |
-
-        shell: bash
-
-      - name: Run Django server
+      - name: Run Django server in background and start tests
         env:
           ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
           DB_ENGINE: ${{ secrets.DB_ENGINE }}
@@ -47,23 +41,11 @@ jobs:
           DB_USER: ${{ secrets.DB_USER }}
           DEBUG: ${{ secrets.DEBUG }}
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
-        run: pipenv run python manage.py runserver &
-        
+        run: |
+          pipenv run python manage.py runserver &
+          pipenv run python manage.py test
+
       - name: quit Django server
         run: pkill -f "python manage.py runserver"
         working-directory: /
         if: always()
-
-      - name: start tests
-        env:
-          ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
-          DB_ENGINE: ${{ secrets.DB_ENGINE }}
-          DB_HOST: ${{ secrets.DB_HOST }}
-          DB_NAME: ${{ secrets.DB_NAME }}
-          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-          DB_PORT: ${{ secrets.DB_PORT }}
-          DB_USER: ${{ secrets.DB_USER }}
-          DEBUG: ${{ secrets.DEBUG }}
-          SECRET_KEY: ${{ secrets.SECRET_KEY }}
-        run: |
-          pipenv run python manage.py test
