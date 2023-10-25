@@ -50,7 +50,7 @@ jobs:
         run: pipenv run python manage.py runserver &
         
       - name: quit Django server
-        run: kill -f "python manage.py runserver"
+        run: pkill -f "python manage.py runserver"
         working-directory: /
         if: always()
 
