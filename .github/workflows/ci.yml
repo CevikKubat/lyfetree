@@ -30,7 +30,7 @@ jobs:
       - name: Install dependencies
         run: pipenv install --deploy
 
-      - name: Set Environmental Variables from .env
+      - name: Set Environmental Variables
         run: |
           echo "ALLOWED_HOSTS=${{ secrets.ALLOWED_HOSTS }}" >> .env
           echo "DB_ENGINE=${{ secrets.DB_ENGINE }}" >> .env
