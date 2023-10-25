@@ -15,6 +15,9 @@ jobs:
         python-version: [3.11]
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -22,9 +25,10 @@ jobs:
 
       - name: Upgrade pip and pipenv
         run: pip install --upgrade pip && pip install pipenv && pip install --upgrade pipenv
+        working-directory: /
 
       - name: Install dependencies
-        run: pip install pipenv && pipenv install --deploy
+        run: pipenv install --deploy
 
       - name: Run tests
         run: pipenv run python manage.py runserver
