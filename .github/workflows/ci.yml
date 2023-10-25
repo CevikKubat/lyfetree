@@ -1,4 +1,4 @@
-name: CI
+name: Continous integration test suite
 
 on:
   push:
