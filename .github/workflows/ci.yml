@@ -36,7 +36,7 @@ jobs:
 
         shell: bash
 
-      - name: Run server and quit right away
+      - name: Run Django server
         env:
           ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
           DB_ENGINE: ${{ secrets.DB_ENGINE }}
@@ -47,10 +47,12 @@ jobs:
           DB_USER: ${{ secrets.DB_USER }}
           DEBUG: ${{ secrets.DEBUG }}
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
-        run: |
-          pipenv run python manage.py runserver
-          pkill -f "python manage.py runserver"
-        if: always()  # Ensure this step is always executed, even if the previous steps fail
+        run: pipenv run python manage.py runserver &
+        
+      - name: quit Django server
+        run: kill -f "python manage.py runserver"
+        working-directory: /
+        if: always()
 
       - name: start tests
         run: |
