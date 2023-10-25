@@ -36,7 +36,7 @@ jobs:
 
         shell: bash
 
-      - name: Run tests
+      - name: Run server and quit right away
         env:
           ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
           DB_ENGINE: ${{ secrets.DB_ENGINE }}
@@ -49,3 +49,9 @@ jobs:
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
         run: |
           pipenv run python manage.py runserver
+          pkill -f "python manage.py runserver"
+        if: always()  # Ensure this step is always executed, even if the previous steps fail
+
+      - name: start tests
+        run: |
+          pipenv run python manage.py test
